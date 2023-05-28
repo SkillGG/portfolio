@@ -1,0 +1,36 @@
+footer {
+    color: lightblue;
+    padding: 1px 10px;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 90;
+    bottom: 0;
+    background-color: #111c;
+    width: 100vw;
+    div {
+        display: flex;
+        flex-direction: row;
+    }
+    #icons {
+        margin-left: auto;
+        div {
+            padding-inline: 5px;
+            height: 25px;
+            a {
+                text-decoration: none;
+                color: red;
+                &:visited {
+                    color: red;
+                }
+                &:hover {
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+            img {
+                width: 15px;
+                height: 25px;
+            }
+        }
+    }
+}
