@@ -1,11 +1,11 @@
 import { FunctionComponent } from "react";
 import { PAGES } from "../App";
 
-interface MainPageProps {
+interface PaginatorProps {
     page: PAGES;
 }
 
-const MainPage: FunctionComponent<MainPageProps> = ({ page }) => {
+const Paginator: FunctionComponent<PaginatorProps> = ({ page }) => {
     return (
         <>
             {(() => {
@@ -22,4 +22,4 @@ const MainPage: FunctionComponent<MainPageProps> = ({ page }) => {
     );
 };
 
-export default MainPage;
+export default Paginator;

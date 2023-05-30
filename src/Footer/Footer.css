@@ -8,12 +8,14 @@ footer {
   background-color: #111c;
   width: 100vw;
 }
-footer div {
+footer #infoBox {
   display: flex;
   flex-direction: row;
 }
 footer #icons {
   margin-left: auto;
+  display: grid;
+  grid-auto-flow: column;
 }
 footer #icons div {
   padding-inline: 5px;
@@ -33,4 +35,90 @@ footer #icons div a:hover {
 footer #icons div img {
   width: 15px;
   height: 25px;
+}
+@media screen and (max-width: 400px) {
+  footer {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 300px) {
+  footer {
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width: 200px) {
+  footer {
+    font-size: 0.4em;
+  }
+}
+@media screen and (max-width: 600px) {
+  footer #infoBox {
+    display: flex;
+    flex-direction: column;
+  }
+  footer #infoBox #icons {
+    margin: 0;
+    grid-auto-flow: column;
+    grid-template-columns: unset;
+    justify-content: right;
+  }
+}
+footer .langSelectFlag {
+  width: 30px;
+}
+footer .langButton {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+footer ul {
+  margin: 0;
+  padding: 0;
+}
+footer ul li {
+  background-color: white;
+  text-align: center;
+  list-style: none;
+  user-select: none;
+  color: black;
+}
+footer #languageSelectionBox button {
+  box-sizing: border-box;
+}
+footer #languageSelectionBox #currentLang {
+  display: block;
+  height: min-content;
+}
+footer #languageSelectionBox .langButton {
+  padding: 0;
+}
+footer #languageSelectionBox #langSelect[data-shown="false"] {
+  display: none;
+}
+footer #languageSelectionBox #langSelect[data-shown="true"] {
+  display: block;
+}
+footer #languageSelectionBox li {
+  background-color: transparent;
+  border: none;
+  width: min-content;
+}
+footer #languageSelectionBox > div {
+  display: grid;
+  grid-auto-flow: column;
+  width: min-content;
+  gap: 15px;
+  min-height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+footer #languageSelectionBox > div > ul {
+  display: grid;
+  grid-auto-flow: column;
+}
+footer #languageSelectionBox > div > ul > li button {
+  margin: 0;
+  padding: 0;
 }

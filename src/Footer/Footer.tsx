@@ -1,12 +1,67 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import "./Footer.css";
+import { LANGS } from "../App";
+import { Dictionaries } from "../Langs/Dictionary";
 
-const Footer: FC<object> = () => {
+interface FooterProps {
+    lang: LANGS;
+    switchLang(l: LANGS): void;
+}
+
+const langPath = "./lang";
+
+const Footer: FC<FooterProps> = ({ lang, switchLang }) => {
+    const [langSelect, setLangSelect] = useState(false);
+
     return (
         <footer>
-            <div>
-                <div>Made by: SkillGG (Marcin Majewski)</div>
+            <div id="languageSelectionBox">
+                <div>
+                    <button
+                        className="langButton"
+                        id="currentLang"
+                        onClick={() => {
+                            setLangSelect(!langSelect);
+                        }}
+                    >
+                        <img
+                            className="langSelectFlag"
+                            width={30}
+                            src={`${langPath}/${lang}.png`}
+                            alt={`${lang}`}
+                        />
+                    </button>
+                    <ul
+                        id="langSelect"
+                        data-shown={langSelect ? "true" : "false"}
+                    >
+                        {Object.values(LANGS).map((l) => {
+                            return (
+                                l !== lang && (
+                                    <li key={`lang_${l}`}>
+                                        <button
+                                            className="langButton"
+                                            onClick={() => {
+                                                switchLang(l);
+                                            }}
+                                        >
+                                            <img
+                                                className="langSelectFlag"
+                                                src={`${langPath}/${l}.png`}
+                                            />
+                                        </button>
+                                    </li>
+                                )
+                            );
+                        })}
+                    </ul>
+                </div>
+            </div>
+            <div id="infoBox">
+                <div>
+                    {Dictionaries[lang].madeBy}: SkillGG (Marcin Majewski)
+                </div>
                 <div id="icons">
                     <div>
                         <a>
