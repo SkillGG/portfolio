@@ -3,8 +3,34 @@ body {
   font-family: serif;
   color: white;
 }
+:root {
+  --telwidth: 600px;
+}
 #root,
 body {
   padding: 0;
   margin: 0;
+}
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media only screen and (min-width: var(--tabwidth)) {
+  #root {
+    grid-template-columns: 1fr 10fr;
+  }
+  #root nav {
+    height: 250px;
+  }
+  #root nav ul {
+    gap: 25px;
+  }
+  #root main {
+    padding: 25px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #root {
+    grid-template-columns: 1fr;
+  }
 }

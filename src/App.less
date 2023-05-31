@@ -4,8 +4,32 @@ body {
     color: white;
 }
 
+:root{
+    --telwidth: 600px;
+}
+
 #root,
 body {
     padding: 0;
     margin: 0;
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media only screen and (min-width: var(--tabwidth)) {
+        grid-template-columns: 1fr 10fr;
+        nav {
+            height: 250px;
+            ul {
+                gap: 25px;
+            }
+        }
+        main {
+            padding: 25px;
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
 }

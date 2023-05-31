@@ -21,10 +21,9 @@ function App() {
     const [lang, setLang] = useState<LANGS>(LANGS.EN);
 
     const checkPageFromURL = () => {
-        if (location.pathname.match(/^\/about$/)) setPage(PAGES.ABOUT);
-        else if (location.pathname.match(/^\/projects$/))
-            setPage(PAGES.PROJECTS);
-        else setPage(PAGES.MAIN);
+        Object.values(PAGES).forEach((v) => {
+            if (location.pathname.startsWith(`/${v}`)) setPage(v);
+        });
         const localStorageLang = localStorage.getItem("lang");
         if (localStorageLang) {
             Object.values(LANGS).forEach((ln) => {
