@@ -17,18 +17,7 @@ body {
     @media screen and (min-width: @phone-width) {
         margin-bottom: 40px;
     }
-    /* bottom = footer height */
     padding: 25px;
-}
-
-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-}
-
-body {
     background-color: #333;
     font-family: serif;
     color: white;
@@ -42,17 +31,8 @@ body {
 #root {
     display: grid;
     grid-template-columns: 1fr;
-    @media only screen and (min-width: @phone-width) {
+    @media only screen and (min-width: @tablet-width) {
         grid-template-columns: 1fr 10fr;
-        nav {
-            ul {
-                gap: 25px;
-            }
-        }
-        main {
-            padding: 25px;
-            padding-top: 0;
-        }
     }
     @media only screen and (min-width: @tablet-width) {
         grid-template-columns: 1fr;

@@ -38,17 +38,7 @@ nav {
             background-color: red;
             cursor: default;
         }
-    }
-    .pageButton {
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
-    @media screen and (min-width: @desktop-width) {
-        padding-inline: 10px;
-        ul {
+        @media screen and (min-width: @desktop-width) {
             gap: 10%;
             grid-auto-flow: column;
             width: auto;
@@ -59,5 +49,15 @@ nav {
                 margin: 15px;
             }
         }
+    }
+    .pageButton {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    @media screen and (min-width: @desktop-width) {
+        padding-inline: 10px;
     }
 }
