@@ -1,35 +1,60 @@
+@import "./vars.less";
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 60px;
+    @media screen and (min-width: @small-font) {
+        margin-bottom: 70px;
+    }
+    @media screen and (min-width: @mid-font) {
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: @phone-width) {
+        margin-bottom: 40px;
+    }
+    /* bottom = footer height */
+    padding: 25px;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
 body {
     background-color: #333;
     font-family: serif;
     color: white;
 }
 
-:root{
-    --telwidth: 600px;
-}
-
 #root,
 body {
     padding: 0;
-    margin: 0;
 }
 
 #root {
     display: grid;
     grid-template-columns: 1fr;
-    @media only screen and (min-width: var(--tabwidth)) {
+    @media only screen and (min-width: @phone-width) {
         grid-template-columns: 1fr 10fr;
         nav {
-            height: 250px;
             ul {
                 gap: 25px;
             }
         }
         main {
             padding: 25px;
+            padding-top: 0;
         }
     }
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: @tablet-width) {
         grid-template-columns: 1fr;
     }
 }
