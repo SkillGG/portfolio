@@ -1,0 +1,86 @@
+.pass {
+  height: 10px;
+  top: -5px;
+  z-index: 99;
+  background-color: purple;
+  position: relative;
+}
+.pass::after {
+  position: relative;
+  display: block;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  color: black;
+  background-color: yellow;
+  content: ".";
+}
+nav {
+  padding: 0;
+  margin-top: 0;
+}
+nav ul {
+  margin-block: 0;
+  display: grid;
+  padding: 0;
+  justify-items: center;
+  grid-auto-flow: column;
+  width: 100%;
+  overflow: hidden;
+}
+nav ul li {
+  max-height: 100px;
+  text-align: center;
+  display: block;
+  list-style: none;
+  user-select: none;
+  color: black;
+  margin: 0;
+  box-sizing: content-box;
+  width: 100%;
+}
+nav ul li svg {
+  position: relative;
+  overflow: visible;
+  top: -100%;
+}
+nav ul li svg path {
+  fill: red;
+}
+nav ul li button {
+  position: relative;
+  z-index: 100;
+  font-size: 1.1em;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+nav ul li[data-selected="selected"] {
+  border-radius: 10px;
+  width: 150%;
+  cursor: default;
+  z-index: 9;
+}
+nav ul li[data-selected="selected"] button {
+  font-weight: bolder;
+}
+nav ul li[data-selected="selected"] svg path {
+  fill: purple;
+}
+nav ul li:hover {
+  z-index: 99;
+}
+nav ul li:hover button {
+  color: white;
+}
+nav ul li:hover svg path {
+  fill: blue;
+}
+.pageButton {
+  border: red;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
