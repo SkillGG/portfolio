@@ -1,18 +1,34 @@
-@import "./../vars.less";
-
+.pass {
+    &::after {
+        position: relative;
+        display: block;
+        top: 0;
+        height: 1px;
+        width: 100%;
+        left: 0;
+        color: black;
+        background-color: yellow;
+        content: ".";
+    }
+    height: 10px;
+    top: -5px;
+    z-index: 99;
+    background-color: purple;
+    position: relative;
+}
 nav {
     padding: 0;
     margin-top: 0;
     ul {
-        margin-top: 0;
+        margin-block: 0;
         display: grid;
-        margin-inline: auto;
         padding: 0;
         justify-items: center;
-        grid-auto-flow: row;
+        grid-auto-flow: column;
         width: 100%;
+        overflow: hidden;
         li {
-            background-color: white;
+            max-height: 100px;
             text-align: center;
             display: block;
             list-style: none;
@@ -20,44 +36,59 @@ nav {
             color: black;
             margin: 0;
             box-sizing: content-box;
-            border: none;
-            border-bottom: 1px solid black;
             width: 100%;
-            &:hover,
-            &:hover {
-                cursor: pointer;
-                background-color: yellow;
+
+            svg {
+                position: relative;
+                overflow: visible;
+                top: -100%;
+
+                path {
+                    fill: red;
+                }
             }
+
             button {
+                position: relative;
+                z-index: 100;
+                font-size: 1.1em;
                 padding: 5px;
                 width: 100%;
                 height: 100%;
             }
-        }
-        li[data-selected="selected"] {
-            background-color: red;
-            cursor: default;
-        }
-        @media screen and (min-width: @desktop-width) {
-            gap: 10%;
-            grid-auto-flow: column;
-            width: auto;
-            max-width: 750px;
-            li {
-                max-width: 200px;
-                border: 1px solid black;
-                margin: 15px;
+
+            &[data-selected="selected"] {
+                border-radius: 10px;
+                button {
+                    font-weight: bolder;
+                }
+                width: 150%;
+                cursor: default;
+                z-index: 9;
+                svg path {
+                    fill: purple;
+                }
+            }
+
+            &:hover {
+                z-index: 99;
+
+                button {
+                    color: white;
+                }
+
+                svg path {
+                    fill: blue;
+                }
             }
         }
     }
-    .pageButton {
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
-    @media screen and (min-width: @desktop-width) {
-        padding-inline: 10px;
-    }
+}
+
+.pageButton {
+    border: red;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }

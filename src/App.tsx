@@ -8,7 +8,7 @@ import "./App.css";
 export enum PAGES {
     MAIN = "main",
     PROJECTS = "projects",
-    ABOUT = "about",
+    ABOUT = "about"
 }
 
 export enum LANGS {
