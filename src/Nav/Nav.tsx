@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useState } from "react";
 import { LANGS, PAGES } from "../App";
 
 import "./Nav.css";
@@ -11,15 +11,35 @@ interface NavProps {
 }
 
 const Nav: FunctionComponent<NavProps> = ({ page, switchPage, lang }) => {
+    const [showList, setShowList] = useState(false);
+
+    const passRef = useRef<HTMLDivElement>(null);
+    const ulRef = useRef<HTMLUListElement>(null);
+
     return (
         <>
             <nav>
-                <ul>
+                <div className={`showNav ${showList ? "hidden" : ""}`}>
+                    <button
+                        onClick={() => {
+                            setShowList(!showList);
+                        }}
+                    >
+                        ☰
+                    </button>
+                </div>
+                <ul data-shown={showList ? "true" : ""} ref={ulRef}>
                     {Object.entries(PAGES).map((r) => {
                         return (
                             <li
-                                data-selected={page !== r[1] ? `` : "selected"}
+                                data-selected={page !== r[1] ? `` : "true"}
                                 key={`nav_${r[0]}`}
+                                onMouseEnter={(e) => {
+                                    passRef.current?.classList.add("hover");
+                                }}
+                                onMouseLeave={(e) => {
+                                    passRef.current?.classList.remove("hover");
+                                }}
                             >
                                 <button
                                     className="pageButton"
@@ -43,6 +63,7 @@ const Nav: FunctionComponent<NavProps> = ({ page, switchPage, lang }) => {
                         );
                     })}
                 </ul>
+                <div className="pass" ref={passRef}></div>
             </nav>
         </>
     );

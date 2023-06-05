@@ -11,20 +11,24 @@ main {
 }
 body {
     margin: 0;
-    margin-bottom: 60px;
     @media screen and (min-width: @small-font) {
-        margin-bottom: 70px;
+        margin-bottom: @footer-height2;
+        min-height: calc(100vh - @footer-height2);
     }
     @media screen and (min-width: @mid-font) {
-        margin-bottom: 80px;
+        margin-bottom: @footer-height3;
+        min-height: calc(100vh - @footer-height3);
     }
     @media screen and (min-width: @phone-width) {
-        margin-bottom: 40px;
+        margin-bottom: @footer-height2;
+        min-height: calc(100vh - @footer-height2);
     }
     padding: 25px;
-    background-color: #333;
+    background-color: @dark-drop;
     font-family: serif;
     color: white;
+    margin-bottom: @footer-height;
+    min-height: calc(100vh - @footer-height);
 }
 
 #root,
@@ -34,11 +38,8 @@ body {
 
 #root {
     display: grid;
-    grid-template-columns: 1fr;
-    @media only screen and (min-width: @tablet-width) {
-        grid-template-columns: 1fr 10fr;
-    }
-    @media only screen and (min-width: @tablet-width) {
+    grid-template-columns: min-content auto;
+    @media only screen and (min-width: @phone-width) {
         grid-template-columns: 1fr;
     }
 }

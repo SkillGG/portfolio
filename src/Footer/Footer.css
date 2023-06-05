@@ -6,7 +6,7 @@ footer {
   color: lightblue;
   padding: 1px 10px;
   box-sizing: border-box;
-  background-color: #111c;
+  background-color: #04080f;
   width: 100vw;
   height: 55px;
   font-size: 0.5em;
@@ -110,7 +110,7 @@ footer #languageSelectionBox > div > ul > li button {
     height: 70px;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 599px) {
   footer {
     height: 60px;
     font-size: 1em;
@@ -129,5 +129,6 @@ footer #languageSelectionBox > div > ul > li button {
 @media only screen and (min-width: 1024px) {
   footer {
     grid-column: unset;
+    height: 55px;
   }
 }

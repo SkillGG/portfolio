@@ -8,9 +8,9 @@ footer {
     color: lightblue;
     padding: 1px 10px;
     box-sizing: border-box;
-    background-color: #111c;
+    background-color: @darker-drop;
     width: 100vw;
-    height: 55px;
+    height: @footer-height;
     font-size: 0.5em;
 
     #infoBox {
@@ -131,5 +131,6 @@ footer {
     }
     @media only screen and (min-width: @desktop-width) {
         grid-column: unset;
+        height: @footer-height4;
     }
 }

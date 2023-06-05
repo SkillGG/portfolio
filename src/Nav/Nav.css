@@ -1,24 +1,25 @@
 .pass {
-  height: 10px;
+  height: 20px;
   top: -5px;
   z-index: 99;
   background-color: purple;
   position: relative;
+  background: linear-gradient(0deg, #848fa5 0 25%, #b9ffb7 75% 100%);
 }
-.pass::after {
-  position: relative;
-  display: block;
-  top: 0;
-  height: 1px;
-  width: 100%;
-  left: 0;
-  color: black;
-  background-color: yellow;
-  content: ".";
+.pass.hover {
+  background: linear-gradient(0deg, #848fa5 0 25%, #507dbc 75% 100%);
 }
 nav {
+  overflow: hidden;
   padding: 0;
   margin-top: 0;
+}
+nav button {
+  font-family: monospace;
+  line-height: 0px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 nav ul {
   margin-block: 0;
@@ -26,17 +27,46 @@ nav ul {
   padding: 0;
   justify-items: center;
   grid-auto-flow: column;
-  width: 100%;
-  overflow: hidden;
+  height: 65px;
+  width: min-content;
+  overflow: visible;
 }
 nav ul li {
-  max-height: 100px;
+  /* &:nth-child(1) {
+                &:not([data-selected="true"]) {
+                    transform: translateX(@tab-space);
+                    & + :not([data-selected="true"]) {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+            }
+            &:nth-child(2) {
+                &:not([data-selected="true"]) {
+                    transform: translateX(@tab-space);
+                    & + :not([data-selected="true"]) {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+                &[data-selected="true"] {
+                    + li {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+                transform: translateX(calc(2 * @tab-space));
+            }
+            &:nth-child(3) {
+                transform: translateX(calc(4 * @tab-space));
+                &[data-selected="true"] {
+                    transform: translateX(calc(4 * @tab-space));
+                }
+            } */
+  max-height: 65px;
   text-align: center;
   display: block;
   list-style: none;
   user-select: none;
-  color: black;
   margin: 0;
+  min-width: 10em;
   box-sizing: content-box;
   width: 100%;
 }
@@ -46,27 +76,33 @@ nav ul li svg {
   top: -100%;
 }
 nav ul li svg path {
-  fill: red;
+  fill: #bbd1ea;
 }
 nav ul li button {
   position: relative;
   z-index: 100;
   font-size: 1.1em;
-  padding: 5px;
+  padding-top: 15px;
   width: 100%;
   height: 100%;
 }
-nav ul li[data-selected="selected"] {
+nav ul li[data-selected="true"] {
   border-radius: 10px;
   width: 150%;
   cursor: default;
   z-index: 9;
 }
-nav ul li[data-selected="selected"] button {
+nav ul li[data-selected="true"] button {
   font-weight: bolder;
+  z-index: 10;
+  padding-top: 5px;
 }
-nav ul li[data-selected="selected"] svg path {
-  fill: purple;
+nav ul li[data-selected="true"] svg {
+  top: -120%;
+  height: 120%;
+}
+nav ul li[data-selected="true"] svg path {
+  fill: #b9ffb7;
 }
 nav ul li:hover {
   z-index: 99;
@@ -75,12 +111,99 @@ nav ul li:hover button {
   color: white;
 }
 nav ul li:hover svg path {
-  fill: blue;
+  fill: #507dbc;
 }
-.pageButton {
-  border: red;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+nav .showNav {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  nav {
+    overflow: visible;
+    height: min-content;
+  }
+  nav .showNav {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    min-height: 1em;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    background-color: #848fa5;
+    display: block;
+    transition-duration: 0.5s;
+    z-index: 999;
+  }
+  nav .showNav.hidden {
+    left: -10px;
+    transition-duration: 0.5s;
+  }
+  nav .showNav button {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+  nav ul {
+    position: relative;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    left: -300%;
+    grid-auto-flow: row;
+    overflow: hidden;
+    margin-top: 10px;
+    min-width: 0px;
+    width: 1px;
+    visibility: hidden;
+  }
+  nav ul[data-shown="true"] {
+    width: min-content;
+    transition-duration: 1s;
+    min-width: 50px;
+    width: 90px;
+    height: 50%;
+    left: 0;
+    display: grid;
+    visibility: visible;
+  }
+  nav ul li {
+    height: min-content;
+    overflow: visible;
+    width: 100%;
+    min-width: unset;
+    padding: 10px;
+    padding-block: 15px;
+    margin: 0;
+  }
+  nav ul li button {
+    overflow: visible;
+    font-size: 1.2em;
+    padding: 25px;
+  }
+  nav ul li button {
+    padding: 0;
+    margin: 0;
+  }
+  nav ul li svg {
+    display: none;
+  }
+  nav ul li[data-selected="true"] svg {
+    height: 50%;
+    width: 150%;
+    top: -75%;
+  }
+  nav .pass {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  nav ul {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 200px) {
+  nav ul {
+    font-size: 0.6em;
+  }
 }

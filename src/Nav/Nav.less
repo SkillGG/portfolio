@@ -1,94 +1,232 @@
+@import "./../vars.less";
+
+@tab-height: 65px;
+@tab-space: -10%;
+
+@tab-color: @light-drop;
+@tab-selected-color: @green-tint;
+@tab-hover-color: @dark-tint;
+
+@nav-hide-duration: 0.5s;
+
 .pass {
-    &::after {
-        position: relative;
-        display: block;
-        top: 0;
-        height: 1px;
-        width: 100%;
-        left: 0;
-        color: black;
-        background-color: yellow;
-        content: ".";
-    }
-    height: 10px;
+    height: 20px;
     top: -5px;
     z-index: 99;
     background-color: purple;
     position: relative;
+    background: linear-gradient(
+        0deg,
+        @dark-drop 0 25%,
+        @tab-selected-color 75% 100%
+    );
+    &.hover {
+        background: linear-gradient(
+            0deg,
+            @dark-drop 0 25%,
+            @tab-hover-color 75% 100%
+        );
+    }
 }
 nav {
+    overflow: hidden;
     padding: 0;
     margin-top: 0;
+    button {
+        font-family: monospace;
+        line-height: 0px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
     ul {
         margin-block: 0;
         display: grid;
         padding: 0;
         justify-items: center;
         grid-auto-flow: column;
-        width: 100%;
-        overflow: hidden;
+        height: @tab-height;
+        width: min-content;
+        overflow: visible;
         li {
-            max-height: 100px;
+            /* &:nth-child(1) {
+                &:not([data-selected="true"]) {
+                    transform: translateX(@tab-space);
+                    & + :not([data-selected="true"]) {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+            }
+            &:nth-child(2) {
+                &:not([data-selected="true"]) {
+                    transform: translateX(@tab-space);
+                    & + :not([data-selected="true"]) {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+                &[data-selected="true"] {
+                    + li {
+                        transform: translateX(calc(4 * @tab-space));
+                    }
+                }
+                transform: translateX(calc(2 * @tab-space));
+            }
+            &:nth-child(3) {
+                transform: translateX(calc(4 * @tab-space));
+                &[data-selected="true"] {
+                    transform: translateX(calc(4 * @tab-space));
+                }
+            } */
+            max-height: @tab-height;
             text-align: center;
             display: block;
             list-style: none;
             user-select: none;
-            color: black;
             margin: 0;
+            min-width: 10em;
             box-sizing: content-box;
             width: 100%;
-
             svg {
                 position: relative;
                 overflow: visible;
                 top: -100%;
-
                 path {
-                    fill: red;
+                    fill: @tab-color;
                 }
             }
-
             button {
                 position: relative;
                 z-index: 100;
                 font-size: 1.1em;
-                padding: 5px;
+                padding-top: 15px;
                 width: 100%;
                 height: 100%;
             }
-
-            &[data-selected="selected"] {
+            &[data-selected="true"] {
                 border-radius: 10px;
                 button {
                     font-weight: bolder;
+                    z-index: 10;
+                    padding-top: 5px;
                 }
                 width: 150%;
                 cursor: default;
                 z-index: 9;
-                svg path {
-                    fill: purple;
+                svg {
+                    top: -120%;
+                    height: 120%;
+                    path {
+                        fill: @tab-selected-color;
+                    }
                 }
             }
 
             &:hover {
                 z-index: 99;
-
                 button {
                     color: white;
                 }
 
                 svg path {
-                    fill: blue;
+                    fill: @tab-hover-color;
                 }
             }
         }
     }
-}
+    .showNav {
+        display: none;
+    }
+    @media screen and (max-width: @phone-width) {
+        overflow: visible;
+        height: min-content;
+        .showNav {
+            &.hidden {
+                left: -10px;
+                transition-duration: @nav-hide-duration;
+            }
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            min-height: 1em;
+            height: max-content;
+            padding: 0;
+            margin: 0;
+            background-color: @dark-drop;
+            display: block;
+            transition-duration: @nav-hide-duration;
+            button {
+                padding: 0;
+                margin: 0;
+                font-size: 1.5em;
+                font-weight: bolder;
+                cursor: pointer;
+            }
+            z-index: 999;
+        }
+        ul {
+            position: relative;
+            &[data-shown="true"] {
+                width: min-content;
+                transition-duration: 1s;
+                min-width: 50px;
+                width: 90px;
+                height: 50%;
+                left: 0;
+                display: grid;
+                visibility: visible;
+            }
+            transition-duration: 1s;
+            transition-timing-function: ease-out;
+            left: -300%;
+            grid-auto-flow: row;
+            overflow: hidden;
+            margin-top: 10px;
+            min-width: 0px;
+            width: 1px;
+            visibility: hidden;
+            li {
+                height: min-content;
+                overflow: visible;
+                width: 100%;
+                min-width: unset;
+                padding: 10px;
+                padding-block: 15px;
+                margin: 0;
+                button {
+                    overflow: visible;
+                    font-size: 1.2em;
+                    padding: 25px;
+                }
+                button {
+                    padding: 0;
+                    margin: 0;
+                }
+                svg {
+                    display: none;
+                }
+                &[data-selected="true"] {
+                    svg {
+                        height: 50%;
+                        width: 150%;
+                        top: -75%;
+                    }
+                }
+            }
+        }
+        .pass {
+            display: none;
+        }
+    }
+    @media screen and (max-width: @mid-font) {
+        ul {
+            font-size: 0.8em;
+        }
+    }
 
-.pageButton {
-    border: red;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+    @media screen and (max-width: @small-font) {
+        ul {
+            font-size: 0.6em;
+        }
+    }
 }
