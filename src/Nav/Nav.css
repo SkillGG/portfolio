@@ -32,34 +32,6 @@ nav ul {
   overflow: visible;
 }
 nav ul li {
-  /* &:nth-child(1) {
-                &:not([data-selected="true"]) {
-                    transform: translateX(@tab-space);
-                    & + :not([data-selected="true"]) {
-                        transform: translateX(calc(4 * @tab-space));
-                    }
-                }
-            }
-            &:nth-child(2) {
-                &:not([data-selected="true"]) {
-                    transform: translateX(@tab-space);
-                    & + :not([data-selected="true"]) {
-                        transform: translateX(calc(4 * @tab-space));
-                    }
-                }
-                &[data-selected="true"] {
-                    + li {
-                        transform: translateX(calc(4 * @tab-space));
-                    }
-                }
-                transform: translateX(calc(2 * @tab-space));
-            }
-            &:nth-child(3) {
-                transform: translateX(calc(4 * @tab-space));
-                &[data-selected="true"] {
-                    transform: translateX(calc(4 * @tab-space));
-                }
-            } */
   max-height: 65px;
   text-align: center;
   display: block;
